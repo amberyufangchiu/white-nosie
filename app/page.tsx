@@ -71,7 +71,17 @@ export default function Home() {
             </CardFooter>
           </Card>
         );
-      })}
+
+export default function Home() {
+  return (
+    <main className="flex items-center justify-center w-screen h-screen">
+      <ScrollArea className="h-200px w-3/4 rounded-md p-4">
+        <div className="flex flex-wrap gap-5">
+          {icons.map((src) => {
+            return <AudioPlayer key={crypto.randomUUID()} src={src} />;
+          })}
+        </div>
+      </ScrollArea>
     </main>
   );
 }
