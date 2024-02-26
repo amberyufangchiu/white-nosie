@@ -1,5 +1,4 @@
 import * as React from "react";
-import { cn } from "@/lib/utils";
 import "./volume.css";
 
 export const Volume = React.forwardRef<
@@ -7,7 +6,7 @@ export const Volume = React.forwardRef<
   React.HTMLAttributes<HTMLInputElement>
 >(({ className, ...props }, ref) => (
   <input
-    className="volume"
+    className={`volume ${props.isPlaying && "bg-red-200"}`}
     type="range"
     min="0"
     max="100"

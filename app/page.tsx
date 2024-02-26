@@ -70,12 +70,8 @@ const AudioPlayer = ({ src }) => {
   const [volume, setVolume] = useState(50);
   const [playing, toggle] = useAudio(src.sound, volume);
 
-  useEffect(() => {
-    console.log(volume);
-  }, [volume]);
-
   return (
-    <Card key={crypto.randomUUID()} onClick={toggle}>
+    <Card key={crypto.randomUUID()} onClick={toggle} isPlaying={playing}>
       <CardContent className="flex items-center justify-center">
         {src?.icon}
       </CardContent>
@@ -84,9 +80,9 @@ const AudioPlayer = ({ src }) => {
           className=""
           value={volume}
           onChange={(event) => {
-            // event.preventDefault();
             setVolume((event.target as HTMLInputElement).valueAsNumber);
           }}
+          isPlaying={playing}
         />
       </CardFooter>
     </Card>
