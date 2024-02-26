@@ -15,16 +15,25 @@ import { ScrollArea } from "@/components/ScrollArea";
 const icons = [
   {
     icon: <GiCoffeePot key={crypto.randomUUID()} size="40" />,
-    sound: "./Cafe.mp3",
+    sound: "./sounds/Cafe.mp3",
   },
-  { icon: <IoRainyOutline key={crypto.randomUUID()} size="40" /> },
+  {
+    icon: <IoRainyOutline key={crypto.randomUUID()} size="40" />,
+    sound: "./sounds/LightRain.mp3",
+  },
+  {
+    icon: <LuWaves key={crypto.randomUUID()} size="40" />,
+    sound: "./sounds/Waves.mp3",
+  },
+  {
+    icon: <IoMdBonfire key={crypto.randomUUID()} size="40" />,
+    sound: "./sounds/Campfire.mp3",
+  },
   { icon: <BsWind key={crypto.randomUUID()} size="40" /> },
-  { icon: <IoMdBonfire key={crypto.randomUUID()} size="40" /> },
   { icon: <GiNightSleep key={crypto.randomUUID()} size="40" /> },
   { icon: <BsAirplaneEngines key={crypto.randomUUID()} size="40" /> },
   { icon: <GiWashingMachine key={crypto.randomUUID()} size="40" /> },
   { icon: <IoWaterOutline key={crypto.randomUUID()} size="40" /> },
-  { icon: <LuWaves key={crypto.randomUUID()} size="40" /> },
   // <MdOutlineForest key={crypto.randomUUID()} size="40" />,
 ];
 
