@@ -3,10 +3,17 @@ import { cn } from "@/lib/utils";
 import "./volume.css";
 
 export const Volume = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
+  HTMLInputElement,
+  React.HTMLAttributes<HTMLInputElement>
 >(({ className, ...props }, ref) => (
-  <input id="volume" type="range" min="0" max="100" step="1" />
+  <input
+    className="volume"
+    type="range"
+    min="0"
+    max="100"
+    step="1"
+    {...props}
+  />
 ));
 
 Volume.displayName = "Volume";

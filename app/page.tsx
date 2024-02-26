@@ -66,8 +66,14 @@ export default function Home() {
               {i?.icon}
             </CardContent>
             <CardFooter>
-              {/* <audio controls src="./Cafe.mp3" /> */}
-              <input id="volume" type="range" min="0" max="100" step="1" />
+        <Volume
+          className=""
+          value={volume}
+          onChange={(event) => {
+            // event.preventDefault();
+            setVolume((event.target as HTMLInputElement).valueAsNumber);
+          }}
+        />
             </CardFooter>
           </Card>
         );
