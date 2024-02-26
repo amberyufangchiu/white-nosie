@@ -37,6 +37,12 @@ const useAudio = (url, volume) => {
   };
 
   useEffect(() => {
+    if (audio) {
+      audio.volume = volume / 100;
+    }
+  }, [volume]);
+
+  useEffect(() => {
     const audioElement = new Audio(url);
     audioElement.loop = true;
     setAudio(audioElement);
