@@ -1,29 +1,50 @@
 "use client";
 
-import { Card, CardContent, CardFooter } from "@/components/Card";
-import { GiCoffeePot } from "react-icons/gi";
-import { IoRainyOutline } from "react-icons/io5";
-import { BsWind } from "react-icons/bs";
-import { IoMdBonfire } from "react-icons/io";
-import { GiNightSleep } from "react-icons/gi";
-import { BsAirplaneEngines } from "react-icons/bs";
-import { GiWashingMachine } from "react-icons/gi";
-import { IoWaterOutline } from "react-icons/io5";
-import { LuWaves } from "react-icons/lu";
 import { useEffect, useState } from "react";
+import { Card, CardContent, CardFooter } from "@/components/Card";
+import { GiCoffeePot, GiNightSleep, GiWashingMachine } from "react-icons/gi";
+import { IoRainyOutline, IoWaterOutline } from "react-icons/io5";
+import { BsWind, BsAirplaneEngines } from "react-icons/bs";
+import { IoMdBonfire } from "react-icons/io";
+import { LuWaves } from "react-icons/lu";
+import { Volume } from "@/components/Volume";
+import { ScrollArea } from "@/components/ScrollArea";
 // import { MdOutlineForest } from "react-icons/md";
 
 // TODO: writing/library/change pages/street/
+const icons = [
+  {
+    icon: <GiCoffeePot key={crypto.randomUUID()} size="40" />,
+    sound: "./Cafe.mp3",
+  },
+  { icon: <IoRainyOutline key={crypto.randomUUID()} size="40" /> },
+  { icon: <BsWind key={crypto.randomUUID()} size="40" /> },
+  { icon: <IoMdBonfire key={crypto.randomUUID()} size="40" /> },
+  { icon: <GiNightSleep key={crypto.randomUUID()} size="40" /> },
+  { icon: <BsAirplaneEngines key={crypto.randomUUID()} size="40" /> },
+  { icon: <GiWashingMachine key={crypto.randomUUID()} size="40" /> },
+  { icon: <IoWaterOutline key={crypto.randomUUID()} size="40" /> },
+  { icon: <LuWaves key={crypto.randomUUID()} size="40" /> },
+  // <MdOutlineForest key={crypto.randomUUID()} size="40" />,
+];
 
-const useAudio = (url: string) => {
+const useAudio = (url, volume) => {
   const [audio, setAudio] = useState(null);
   const [playing, setPlaying] = useState(false);
 
-  useEffect(() => {
-    setAudio(new Audio(url));
-  }, []);
+  const toggle = () => {
+    setPlaying(!playing);
+  };
 
-  const toggle = () => setPlaying(!playing);
+  useEffect(() => {
+    const audioElement = new Audio(url);
+    audioElement.loop = true;
+    setAudio(audioElement);
+
+    return () => {
+      audioElement.pause();
+    };
+  }, []);
 
   useEffect(() => {
     playing && audio ? audio?.play() : audio?.pause();
@@ -39,33 +60,20 @@ const useAudio = (url: string) => {
   return [playing, toggle];
 };
 
-export default function Home() {
-  const icons = [
-    {
-      icon: <GiCoffeePot key={crypto.randomUUID()} size="40" />,
-      sound: "./Cafe.mp3",
-    },
-    { icon: <IoRainyOutline key={crypto.randomUUID()} size="40" /> },
-    { icon: <BsWind key={crypto.randomUUID()} size="40" /> },
-    { icon: <IoMdBonfire key={crypto.randomUUID()} size="40" /> },
-    { icon: <GiNightSleep key={crypto.randomUUID()} size="40" /> },
-    { icon: <BsAirplaneEngines key={crypto.randomUUID()} size="40" /> },
-    { icon: <GiWashingMachine key={crypto.randomUUID()} size="40" /> },
-    { icon: <IoWaterOutline key={crypto.randomUUID()} size="40" /> },
-    { icon: <LuWaves key={crypto.randomUUID()} size="40" /> },
-    // <MdOutlineForest key={crypto.randomUUID()} size="40" />,
-  ];
-  const [playing, toggle] = useAudio("./Cafe.mp3");
+const AudioPlayer = ({ src }) => {
+  const [volume, setVolume] = useState(50);
+  const [playing, toggle] = useAudio(src.sound, volume);
+
+  useEffect(() => {
+    console.log(volume);
+  }, [volume]);
 
   return (
-    <main className="flex items-center gap-5 px-96 py-24 flex-wrap">
-      {icons.map((i) => {
-        return (
-          <Card key={crypto.randomUUID()} onClick={toggle}>
-            <CardContent className="flex items-center justify-center">
-              {i?.icon}
-            </CardContent>
-            <CardFooter>
+    <Card key={crypto.randomUUID()} onClick={toggle}>
+      <CardContent className="flex items-center justify-center">
+        {src?.icon}
+      </CardContent>
+      <CardFooter>
         <Volume
           className=""
           value={volume}
@@ -74,9 +82,10 @@ export default function Home() {
             setVolume((event.target as HTMLInputElement).valueAsNumber);
           }}
         />
-            </CardFooter>
-          </Card>
-        );
+      </CardFooter>
+    </Card>
+  );
+};
 
 export default function Home() {
   return (
