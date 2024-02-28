@@ -99,11 +99,13 @@ const AudioPlayer = ({ src }) => {
 };
 
 export default function Home() {
+  const sounds = Sounds();
+
   return (
     <main className="flex items-center justify-center w-screen h-screen">
       <ScrollArea className="h-200px w-3/4 rounded-md p-4">
-        <div className="flex flex-wrap gap-5">
-          {icons.map((src) => {
+        <div className="grid grid-cols-4 gap-4">
+          {sounds.map((src) => {
             return <AudioPlayer key={crypto.randomUUID()} src={src} />;
           })}
         </div>
