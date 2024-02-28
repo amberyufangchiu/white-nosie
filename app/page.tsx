@@ -2,40 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardFooter } from "@/components/Card";
-import { GiCoffeePot, GiNightSleep, GiWashingMachine } from "react-icons/gi";
-import { IoRainyOutline, IoWaterOutline } from "react-icons/io5";
-import { BsWind, BsAirplaneEngines } from "react-icons/bs";
-import { IoMdBonfire } from "react-icons/io";
-import { LuWaves } from "react-icons/lu";
 import { Volume } from "@/components/Volume";
 import { ScrollArea } from "@/components/ScrollArea";
-// import { MdOutlineForest } from "react-icons/md";
-
-// TODO: writing/library/change pages/street/
-const icons = [
-  {
-    icon: <GiCoffeePot key={crypto.randomUUID()} size="40" />,
-    sound: "./sounds/Cafe.mp3",
-  },
-  {
-    icon: <IoRainyOutline key={crypto.randomUUID()} size="40" />,
-    sound: "./sounds/LightRain.mp3",
-  },
-  {
-    icon: <LuWaves key={crypto.randomUUID()} size="40" />,
-    sound: "./sounds/Waves.mp3",
-  },
-  {
-    icon: <IoMdBonfire key={crypto.randomUUID()} size="40" />,
-    sound: "./sounds/Campfire.mp3",
-  },
-  { icon: <BsWind key={crypto.randomUUID()} size="40" /> },
-  { icon: <GiNightSleep key={crypto.randomUUID()} size="40" /> },
-  { icon: <BsAirplaneEngines key={crypto.randomUUID()} size="40" /> },
-  { icon: <GiWashingMachine key={crypto.randomUUID()} size="40" /> },
-  { icon: <IoWaterOutline key={crypto.randomUUID()} size="40" /> },
-  // <MdOutlineForest key={crypto.randomUUID()} size="40" />,
-];
+import { Sounds } from "@/components/Sounds";
 
 const useAudio = (url, volume) => {
   const [audio, setAudio] = useState(null);
@@ -80,6 +49,9 @@ const AudioPlayer = ({ src }) => {
   const [playing, toggle] = useAudio(src.sound, volume);
 
   return (
+    <Card
+      key={crypto.randomUUID()}
+      onClick={toggle}
       className={playing ? "bg-red-200" : undefined}
     >
       <CardContent className="flex items-center justify-center">
@@ -92,7 +64,6 @@ const AudioPlayer = ({ src }) => {
           onChange={(event) => {
             setVolume((event.target as HTMLInputElement).valueAsNumber);
           }}
-          isPlaying={playing}
         />
       </CardFooter>
     </Card>
