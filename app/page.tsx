@@ -6,8 +6,15 @@ import { Volume } from "@/components/Volume";
 import { ScrollArea } from "@/components/ScrollArea";
 import { Sounds } from "@/components/Sounds";
 
-const useAudio = (url, volume) => {
-  const [audio, setAudio] = useState(null);
+type UseAudioReturnType = [boolean, () => void];
+
+type AudioSrc = {
+  sound: string;
+  icon: React.ReactNode;
+};
+
+const useAudio = (url: string, volume: number): UseAudioReturnType => {
+  const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
 
   const toggle = () => {
@@ -42,6 +49,11 @@ const useAudio = (url, volume) => {
   }, []);
 
   return [playing, toggle];
+};
+
+type AudioPlayerProps = {
+  src: AudioSrc;
+  isSelected: boolean;
 };
 
 const AudioPlayer = ({ src, isSelected }: AudioPlayerProps) => {
