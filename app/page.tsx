@@ -44,9 +44,13 @@ const useAudio = (url, volume) => {
   return [playing, toggle];
 };
 
-const AudioPlayer = ({ src }) => {
+const AudioPlayer = ({ src, isSelected }: AudioPlayerProps) => {
   const [volume, setVolume] = useState(50);
   const [playing, toggle] = useAudio(src.sound, volume);
+
+  useEffect(() => {
+    isSelected && toggle();
+  }, []);
 
   return (
     <Card
@@ -72,13 +76,20 @@ const AudioPlayer = ({ src }) => {
 
 export default function Home() {
   const sounds = Sounds();
+  const [mode, setMode] = useState<string[]>([]);
+  const relax = ["Campfire", "Night"];
+  const focus = ["Cafe", "LightRain"];
+  const forest = ["Birds", "Wind", "SoftRain", "River"];
 
   return (
-    <main className="flex items-center justify-center w-screen h-screen">
-      <ScrollArea className="h-200px w-3/4 rounded-md p-4">
-        <div className="grid grid-cols-4 gap-4">
+      <div className="flex gap-2">
+        <Button onClick={() => setMode([])}>Stop</Button>
+        <Button onClick={() => setMode(relax)}>Relax</Button>
+        <Button onClick={() => setMode(focus)}>Focus</Button>
+        <Button onClick={() => setMode(forest)}>Forest</Button>
+      </div>
           {sounds.map((src) => {
-            return <AudioPlayer key={crypto.randomUUID()} src={src} />;
+                isSelected={mode.includes(src.name || "")}
           })}
         </div>
       </ScrollArea>
