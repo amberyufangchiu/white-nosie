@@ -1,37 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# mur mur
 
-## Getting Started
+**mur mur** is a calming web app that lets you mix ambient sounds to create your perfect soundscape — whether you're trying to relax, focus, or drift off to sleep.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🌿 Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 🎧 **Ambient Sound Modes** – Switch between soothing environments like **Relax**, **Focus**, and **Forest**.
+- 🎚️ **Individual Volume Control** – Fine-tune the volume of each sound for a personalized experience.
+- 📱 **Responsive Design** – Enjoy seamless functionality on both desktop and mobile devices.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 🛠️ Built With
 
-## Learn More
+- **Next.js** – React framework for server-side rendering and performance.
+- **React** – UI library for dynamic, component-based interfaces.
+- **Tailwind CSS** – Utility-first CSS for fast and flexible styling.
+- **Radix UI** – Accessible, unstyled UI primitives.
+- **Lucide Icons** – Crisp, modern icons with great customization options.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📦 Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+| Command         | Description                          |
+| --------------- | ------------------------------------ |
+| `npm run dev`   | Start the development server         |
+| `npm run build` | Build the application for production |
+| `npm start`     | Run the production server            |
+| `npm run lint`  | Run code linting for best practices  |
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📜 License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# white-nosie
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## 👤 Author
+
+Made with ❤️ by  
+**[@yufangchiu](https://yufangchiu.vercel.app/)**
+
+---
+
+## 🔊 Sound Resources
+
+- Ambient audio sourced from: [Pixabay – White Noise Collection](https://pixabay.com/sound-effects/search/white-noise/)
